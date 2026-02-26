@@ -3,7 +3,8 @@ name: CI (dev)
 on:
   push:
     branches:
-      - "**"
+      - "dev/**"
+      - "dev/*"
 
 jobs:
   test:
@@ -22,8 +23,11 @@ jobs:
         with:
           python-version: "3.13.11"
 
-      - name: Sync dependencies (creates virtual env)
+      - name: Sync dev dependencies (creates virtual env)
         run: uv sync --dev
+
+      - name: Sync dependencies (creates virtual env)
+        run: uv sync
 
       - name: Run tests
         run: uv run pytest -q
