@@ -3,8 +3,8 @@ name: CI (dev)
 on:
   push:
     branches:
-      - "dev/**"
-      - "dev/*"
+      - "dev/**" # any dev/<feature>
+      - "dev/*" # explicit one-level pattern
 
 jobs:
   test:
@@ -12,7 +12,7 @@ jobs:
     environment: dev
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install uv
@@ -23,11 +23,11 @@ jobs:
         with:
           python-version: "3.13.11"
 
-      - name: Sync dev dependencies (creates virtual env)
-        run: uv sync --dev
+      - name: Sync deps
+        run: uv sync --dev --group lint --group test
 
-      - name: Sync dependencies (creates virtual env)
-        run: uv sync
+      - name: Run linting
+        run: uv run ruff check .
 
       - name: Run tests
         run: uv run pytest -q
