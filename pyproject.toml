@@ -8,9 +8,5 @@ dependencies = [
     "numpy>=2.4.2",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "ruff"
-]
-
+[dependency-groups]
+dev = ["ruff", "pytest"]
