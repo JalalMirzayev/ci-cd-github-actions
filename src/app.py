@@ -5,6 +5,7 @@ A simple Python script that prints "Hello, World!" to the console.
 
 import numpy
 
+
 def hello():
     """
     Returns a greeting message.
