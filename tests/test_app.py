@@ -10,4 +10,4 @@ def test_hello():
     """
     Test for the hello function in the app module.
     """
-    assert hello() == "Hello, World!"
+    assert hello() == "Hello, World! [1 2 3]"
