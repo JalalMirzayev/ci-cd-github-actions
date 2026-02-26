@@ -3,7 +3,8 @@ name: Deploy to Test
 on:
   push:
     branches:
-      - test
+      - "test/**"
+      - "test/*"
 
 jobs:
   deploy:
